@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <!-- <div class="cover">
+    <form action="" method="post">
+        <h1>Masukkan Data Diri Anda</h1>
+        <input type="text" placeholder="Masukkan Nama">
+        <input type="number" name="tanggal" placeholder="Masukkan Tanggal Lahir" id="">
+    </form>
+    <video src="background.mp4" autoplay muted loop></video> -->
+    <!-- </div> -->
+    <div class="luar">
+    <a href="https://www.detik.com/bali/berita/d-6424022/12-urutan-zodiak-sesuai-bulan-dan-tanggal-lahir">
+    <button class="learn-more">
+        <span class="circle" aria-hidden="true">
+        <span class="icon arrow"></span>
+        </span>
+        <span class="button-text">Pelajari</span>
+      </button>
+    </a>
+    </div>
+    <div id="loader">
+    <div class="planet">
+    </div>
+    </div>
+
+    <script>
+        // $(document).ready(function(){
+        // setTimeout(function(){
+        //     $("#loader").addClass("loader-active");
+        //     $(".planet").addClass("loader-active");
+        // }, 3000);
+        // });
+        var myVar;
+
+function myFunction() {
+  myVar = setTimeout(showPage, 3000);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementsByClassName("luar").style.display = "block";
+}
+
+    </script>
+</body>
+</html>
