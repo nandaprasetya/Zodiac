@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      #loader {
+        transition: opacity 1s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+      }
+      #loader.hide {
+        transition: opacity 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        opacity: 0;
+        pointer-events: none;
+      }
+    </style>
     <script src="jquery.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <!-- <div class="cover">
     <form action="" method="post">
         <h1>Masukkan Data Diri Anda</h1>
@@ -18,38 +28,44 @@
     <video src="background.mp4" autoplay muted loop></video> -->
     <!-- </div> -->
     <div class="luar">
-    <a href="https://www.detik.com/bali/berita/d-6424022/12-urutan-zodiak-sesuai-bulan-dan-tanggal-lahir">
-    <button class="learn-more">
-        <span class="circle" aria-hidden="true">
-        <span class="icon arrow"></span>
-        </span>
-        <span class="button-text">Pelajari</span>
-      </button>
-    </a>
+      <a
+        href="https://www.detik.com/bali/berita/d-6424022/12-urutan-zodiak-sesuai-bulan-dan-tanggal-lahir"
+      >
+        <button class="learn-more">
+          <span class="circle" aria-hidden="true">
+            <span class="icon arrow"></span>
+          </span>
+          <span class="button-text">Pelajari</span>
+        </button>
+      </a>
     </div>
     <div id="loader">
-    <div class="planet">
-    </div>
+      <div class="planet"></div>
     </div>
 
     <script>
-        // $(document).ready(function(){
-        // setTimeout(function(){
-        //     $("#loader").addClass("loader-active");
-        //     $(".planet").addClass("loader-active");
-        // }, 3000);
-        // });
-        var myVar;
+      // lama loading static
+      // const time = 3000 * 3;
 
-function myFunction() {
-  myVar = setTimeout(showPage, 3000);
-}
+      // lama loading dinamis
+      const perfData = window.performance.timing,
+        EstimatedTime = -(perfData.loadEventEnd - perfData.navigationStart),
+        time = ((EstimatedTime / 10) % 550) * 15;
 
-function showPage() {
-  document.getElementById("loader").style.display = "none";
-  document.getElementsByClassName("luar").style.display = "block";
-}
+      // preload menggunakan jquery
+      // $(document).ready(function () { // ketika page sudah di load browser
+      //   setTimeout(function () { // jalankan function saat sudah berapa detik
+      //     $("#loader").fadeOut(500); // element loader akan animasi fade
+      //   }, time);
+      // });
 
+      // preload menggunakan vanilla
+      document.addEventListener("DOMContentLoaded", function () {
+        const loader = document.querySelector("#loader");
+        setTimeout(function () {
+          loader.classList.add("hide");
+        }, time);
+      });
     </script>
-</body>
+  </body>
 </html>
